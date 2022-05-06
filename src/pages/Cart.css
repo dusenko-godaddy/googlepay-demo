@@ -1,0 +1,92 @@
+.cart {
+  position: relative;
+  display: inline-flex;
+}
+
+.cart:hover {
+  text-decoration: none;
+  color: #d60e96;
+}
+
+.cart_total {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+.cart_total span {
+  font-weight: bold;
+}
+
+.cart_payment {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.cart_payment_checkout {
+  margin-top: 20px;
+}
+
+.cart_payment_checkout_button {
+  width: 240px;
+  height: 40px;
+  margin: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background-color: #5cbd5c;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cart-basket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: .6rem;
+  position: absolute;
+  top: -6px;
+  right: -5px;
+  width: 15px;
+  height: 15px;
+  color: #fff;
+  background-color: #418deb;
+  border-radius: 50%;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+table .bold {
+  font-weight: bold;
+}
+
+table .left {
+  text-align: left;
+}
+
+table .center {
+  text-align: center;
+}
+
+table .right {
+  text-align: right;
+}
+
+table .action svg {
+  cursor: pointer;
+}
