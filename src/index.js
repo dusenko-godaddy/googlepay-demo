@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CartProvider } from "react-use-cart";
 
 import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
@@ -17,9 +18,11 @@ const options = {
 }
 
 ReactDOM.render(
-  <AlertProvider template={AlertTemplate} {...options}>
+  <CartProvider>
+    <AlertProvider template={AlertTemplate} {...options}>
       <App />
-    </AlertProvider>,
+    </AlertProvider>
+  </CartProvider>,
   document.getElementById('root')
 );
 

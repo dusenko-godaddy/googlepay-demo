@@ -1,21 +1,18 @@
-import React from 'react';
-import { useState, useEffect, useCallback } from 'react';
-
-import { Link } from "react-router-dom";
-
-import PoyntCollect from '../components/PoyntCollect';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-
-import ClipLoader from "react-spinners/ClipLoader";
+import { useCart } from "react-use-cart";
+import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import './Checkout.css';
+import Loading from "../components/Loading";
+import CartIcon from "../components/CartIcon";
+import PoyntCollect from "../components/PoyntCollect";
+import ProductsTable from "../components/ProductsTable";
 
-const Checkout = ({cart}) => {
-  const [loading, setLoading] = useState(cart.length ? true : false);
+import "./Checkout.css";
+
+const Checkout = () => {
   const navigate = useNavigate();
+  const { items, cartTotal, totalItems, isEmpty, emptyCart } = useCart();
+  const [loading, setLoading] = useState(isEmpty ? false : true);
 
   const options = {
     requireEmail: true,
@@ -29,40 +26,32 @@ const Checkout = ({cart}) => {
     }
   };
 
-  useEffect(() => {
-    if (!cart.length) {
-      setLoading(false);
-    }
-  }, [cart]);
-
   const onNonce = useCallback((nonce) => {
+    emptyCart();
     console.log("NONCE RECEIVED", nonce);
     navigate("/success-page");
-  }, [navigate]);
+  }, [navigate, emptyCart]);
 
   return (
     <div className="page">
-      <div id={loading ? "center" : "none"}>
-        <ClipLoader className="loader" loading={loading} size={150} />
-      </div>
-      <Link to="/cart" className="cart">
-        <FontAwesomeIcon className="fa-lg" icon={faShoppingCart} />
-        <span className="cart-basket d-flex align-items-center justify-content-center">
-          {cart.length}
-        </span>
-      </Link>
-      {cart.length ? (
-        <div className="collect_wrapper">
-          <PoyntCollect 
-            setLoading={setLoading}
-            cartItems={cart}
-            options={options}
-            collectId="collect_wallet"
-            onNonce={onNonce}
-          />
+      <Loading loading={loading}/>
+      <CartIcon totalItems={totalItems}/>
+      {!isEmpty ? (
+        <div className={loading ? "disabled" : "active"}>
+          <ProductsTable/>
+          <div className="collect_wrapper">
+            <PoyntCollect
+              cartItems={items}
+              cartTotal={cartTotal}
+              setLoading={setLoading}
+              options={options}
+              collectId="collect_wallet"
+              onNonce={onNonce}
+            />
+          </div>
         </div>
       ) : (
-        <div id={loading ? "none" : "center"}>
+        <div className={loading ? "disabled" : "active"}>
           <p>No items in the cart:(</p>
         </div>
       )}

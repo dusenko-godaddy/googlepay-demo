@@ -1,14 +1,14 @@
 import { defaultShippingMethods } from '../common/data';
 
-export const createOrder = (cartItems) => {
+export const createOrder = (cartItems, cartTotal) => {
   return {
     total: {
       label: "TOTAL",
-      amount: (cartItems || []).reduce((sum, curr) => sum += curr.price, 0).toString(),
+      amount: cartTotal.toString(),
     },
     lineItems: (cartItems || []).map(item => {
       return {
-        label: item.name,
+        label: item.name + " x" + item.quantity,
         amount: item.price.toString(),
       }
     }),

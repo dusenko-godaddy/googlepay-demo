@@ -1,16 +1,11 @@
 import React from 'react';
-
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useCart } from "react-use-cart";
 
 import './ProductItem.css';
 
-const ProductItem = ({product, addToCart, addDetailsItem}) => {
-  const navigate = useNavigate();
-
-  const handler = () => {
-    addDetailsItem(product);
-    navigate("/details");
-  }
+const ProductItem = ({product}) => {
+  const { addItem } = useCart();
 
   return (
     <div className="product">
@@ -19,12 +14,14 @@ const ProductItem = ({product, addToCart, addDetailsItem}) => {
       </div>
       <div className="product_right">
         <div>
-          <h2 onClick={handler}>{product.name}</h2>
+          <Link to={"/details/" + product.id} className="details">
+            <h2>{product.name}</h2>
+          </Link>
           <p>{product.description}</p>
         </div>
         <div className="product_actions">
           <p className="product_price">{product.price}$</p>
-          <button className="product_button" onClick={() => addToCart(product)}>Add to cart</button>
+          <button className="product_button" onClick={() => addItem(product)}>Add to cart</button>
         </div>
       </div>
     </div>

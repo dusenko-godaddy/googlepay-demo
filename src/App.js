@@ -1,6 +1,3 @@
-import React from 'react';
-import { useState } from 'react';
-
 import { Routes, Route, Link, BrowserRouter as Router } from "react-router-dom";
 
 import Home from './pages/Home';
@@ -10,8 +7,7 @@ import Checkout from './pages/Checkout';
 import SuccessPage from './pages/SuccessPage';
 
 import './App.css';
-
-import TokenizeJs from './dist/bundle';
+import './dist/bundle';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -29,28 +25,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 function App() {
-  const [cart, setCart] = useState([]);
-  const [detailsItem, setDetailsItem] = useState(null);
-
-  const addToCart = (item) => {
-    setCart((state) => {
-      return [...state, item];
-    });
-  };
-
-  const addDetailsItem = (item) => {
-    setDetailsItem(item);
-  }
-
-  const removeFromCart = (item) => {
-    setCart((cart) => {
-      return cart.filter(cartitem => cartitem.id !== item.id);
-    });
-  }
-
   return (
     <Router>
       <Link to="/" className="header">
@@ -58,10 +36,10 @@ function App() {
       </Link>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Home cart={cart} addToCart={addToCart} addDetailsItem={addDetailsItem} />} />
-          <Route path="/details" element={<Details product={detailsItem} />} />
-          <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} /> } />
-          <Route path="/checkout" element={<Checkout cart={cart} /> } />
+          <Route path="/" element={<Home />} />
+          <Route path="/details/:id" element={<Details />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout /> } />
           <Route path="/success-page" element={<SuccessPage /> } />
         </Routes>
       </div>

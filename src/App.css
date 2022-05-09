@@ -25,6 +25,14 @@ html, body, #app, #root, #app>div, .App, .home-page {
   display: none;
 }
 
+.page .centered {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .page .poynt-collect {
   margin-top: 20px;
 }
@@ -34,16 +42,4 @@ html, body, #app, #root, #app>div, .App, .home-page {
   top: 0;
   right: 0;
   font-size: 25px;
-}
-
-#center {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#none {
-  display: none;
 }

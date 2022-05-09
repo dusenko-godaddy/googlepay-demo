@@ -1,28 +1,21 @@
-import React from 'react';
+import { useCart } from "react-use-cart";
 
-import { Link } from "react-router-dom";
-
+import CartIcon from '../components/CartIcon';
 import ProductItem from '../components/ProductItem';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import { products } from '../common/data';
 
 import './Home.css';
 
-const Home = ({cart, addToCart, addDetailsItem}) => {
+const Home = ({addDetailsItem}) => {
+  const { totalItems, addItem } = useCart();
+
   return (
     <div className="page">
-      <Link to="/cart" className="cart">
-        <FontAwesomeIcon className="fa-lg" icon={faShoppingCart} />
-        <span className="cart-basket d-flex align-items-center justify-content-center">
-          {cart.length}
-        </span>
-      </Link>
-      <div className="main">
+      <CartIcon totalItems={totalItems}/>
+      <div className="home_main">
         {products.map(product => {
-          return <ProductItem product={product} key={product.id} addToCart={addToCart} addDetailsItem={addDetailsItem} />
+          return <ProductItem product={product} key={product.id} addToCart={addItem} addDetailsItem={addDetailsItem} />
         })}
       </div>
       <p id="collect"></p>

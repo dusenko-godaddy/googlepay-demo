@@ -1,25 +1,32 @@
-import React, { useMemo } from 'react';
-import { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useCart } from "react-use-cart";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
+import Loading from "../components/Loading";
+import CartIcon from '../components/CartIcon';
 import PoyntCollect from '../components/PoyntCollect';
 
-import ClipLoader from "react-spinners/ClipLoader";
+import { products } from '../common/data';
 
 import './Details.css';
 
-const Details = ({product}) => {
-  const [loading, setLoading] = useState(product ? true : false);
+const Details = () => {
+  const params = useParams();
   const navigate = useNavigate();
+  const { totalItems, emptyCart } = useCart();
 
-  const collectItems = useMemo(() => {
-    return [product];
-  }, [product]);
+  const collectProducts = useMemo(() => {
+    return [products.find(item => item.id === Number(params.id))];
+  }, [params.id]);
+
+  const product = collectProducts[0];
+  const [loading, setLoading] = useState(product ? true : false);
 
   const onNonce = useCallback((nonce) => {
+    emptyCart();
     console.log("NONCE RECEIVED", nonce);
     navigate("/success-page");
-  }, [navigate]);
+  }, [navigate, emptyCart]);
 
   const options = {
     requireEmail: true,
@@ -42,10 +49,9 @@ const Details = ({product}) => {
   }
 
   return (
-    <div className="details">
-      <div id={loading ? "center" : "none"}>
-        <ClipLoader className="loader" loading={loading} size={150} />
-      </div>
+    <div className="page">
+      <Loading loading={loading}/>
+      <CartIcon totalItems={totalItems}/>
       <div className={loading ? 'disabled product product-details' : 'active product product-details'}>
         <div className="product_left">
           <img width="200" height="200" src={product.src} alt={product.name} />
@@ -57,8 +63,9 @@ const Details = ({product}) => {
           </div>
           <div className="product_actions">
             <p className="product_price">{product.price}$</p>
-            <PoyntCollect 
-              cartItems={collectItems}
+            <PoyntCollect
+              cartItems={collectProducts}
+              cartTotal={product.price}
               setLoading={setLoading}
               options={options}
               collectId="collect"

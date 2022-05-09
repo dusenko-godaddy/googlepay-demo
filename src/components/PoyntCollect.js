@@ -1,18 +1,15 @@
-import React from 'react';
-import { useLayoutEffect, useRef, useState } from 'react';
-import { useAlert } from 'react-alert';
 import $ from 'jquery';
+import { useAlert } from 'react-alert';
+import Button from 'react-bootstrap-button-loader';
+import { React, useLayoutEffect, useRef, useState } from 'react';
 
 import './PoyntCollect.css';
 
 import constants from '../common/constants';
 import { availableCouponCodes } from '../common/data';
-import Button from 'react-bootstrap-button-loader';
-
 import { createOrder, buildLineItems, buildTotal, getShippingMethods } from '../helpers/wallet';
 
-
-const PoyntCollect = ({setLoading, cartItems, options, collectId, onNonce}) => {
+const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartTotal}) => {
   const alert = useAlert();
   const collect = useRef();
 
@@ -24,7 +21,11 @@ const PoyntCollect = ({setLoading, cartItems, options, collectId, onNonce}) => {
   };
 
   useLayoutEffect(() => {
-    const order = createOrder(cartItems);
+    if (setLoading) {
+      setLoading(true);
+    }
+
+    const order = createOrder(cartItems, cartTotal);
 
     const walletRequest = {
       merchantName: "GoDaddy Merchant",
@@ -235,6 +236,7 @@ const PoyntCollect = ({setLoading, cartItems, options, collectId, onNonce}) => {
     };
   }, [
     cartItems,
+    cartTotal,
     collectId,
     options.paymentMethods?.card,
     options.paymentMethods?.applePay,

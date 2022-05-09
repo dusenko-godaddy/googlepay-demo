@@ -56,37 +56,3 @@
   background-color: #418deb;
   border-radius: 50%;
 }
-
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 100px;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-table .bold {
-  font-weight: bold;
-}
-
-table .left {
-  text-align: left;
-}
-
-table .center {
-  text-align: center;
-}
-
-table .right {
-  text-align: right;
-}
-
-table .action svg {
-  cursor: pointer;
-}

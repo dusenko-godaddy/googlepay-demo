@@ -1,31 +1,6 @@
-.main {
+.home_main {
   display: grid;
   margin-top: 100px;
   grid-template-columns: repeat(auto-fill, minmax(585px, 2fr));
   gap: 10px;
-}
-
-.cart {
-  position: relative;
-  display: inline-flex;
-}
-
-.cart:hover {
-  text-decoration: none;
-  color: #d60e96;
-}
-
-.cart-basket {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: .6rem;
-  position: absolute;
-  top: -6px;
-  right: -5px;
-  width: 15px;
-  height: 15px;
-  color: #fff;
-  background-color: #418deb;
-  border-radius: 50%;
 }
