@@ -2,10 +2,10 @@ import { useCart } from "react-use-cart";
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Loading from "../components/Loading";
-import CartIcon from "../components/CartIcon";
-import PoyntCollect from "../components/PoyntCollect";
-import ProductsTable from "../components/ProductsTable";
+import Loading from "../../components/Loading/Loading";
+import CartIcon from "../../components/CartIcon/CartIcon";
+import PoyntCollect from "../../components/PoyntCollect/PoyntCollect";
+import ProductsTable from "../../components/ProductsTable/ProductsTable";
 
 import "./Checkout.css";
 

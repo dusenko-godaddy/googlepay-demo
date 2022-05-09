@@ -1,9 +1,9 @@
 import { useCart } from "react-use-cart";
 
-import CartIcon from '../components/CartIcon';
-import ProductItem from '../components/ProductItem';
+import CartIcon from '../../components/CartIcon/CartIcon';
+import ProductItem from '../../components/ProductItem/ProductItem';
 
-import { products } from '../common/data';
+import { products } from '../../lib/common/data';
 
 import './Home.css';
 

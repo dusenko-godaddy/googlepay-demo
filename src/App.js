@@ -1,20 +1,20 @@
 import { Routes, Route, Link, BrowserRouter as Router } from "react-router-dom";
 
-import Home from './pages/Home';
-import Cart from './pages/Cart';
-import Details from './pages/Details';
-import Checkout from './pages/Checkout';
-import SuccessPage from './pages/SuccessPage';
+import Home from "./pages/Home/Home";
+import Cart from "./pages/Cart/Cart";
+import Details from "./pages/Details/Details";
+import Checkout from "./pages/Checkout/Checkout";
+import SuccessPage from "./pages/SuccessPage/SuccessPage";
 
-import './App.css';
-import './dist/bundle';
+import "./App.css";
+import "./lib/collect/bundle";
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+// Your web app"s Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBCFkJA6Jkm2jFlTCpxyhIZRVar07psnJw",
   authDomain: "pay-demo-9577e.firebaseapp.com",

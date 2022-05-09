@@ -5,9 +5,9 @@ import { React, useLayoutEffect, useRef, useState } from 'react';
 
 import './PoyntCollect.css';
 
-import constants from '../common/constants';
-import { availableCouponCodes } from '../common/data';
-import { createOrder, buildLineItems, buildTotal, getShippingMethods } from '../helpers/wallet';
+import constants from '../../lib/common/constants';
+import { availableCouponCodes } from '../../lib/common/data';
+import { createOrder, buildLineItems, buildTotal, getShippingMethods } from '../../lib/helpers/wallet';
 
 const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartTotal}) => {
   const alert = useAlert();
@@ -21,6 +21,7 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
   };
 
   useLayoutEffect(() => {
+    console.log("useLayoutEffect");
     if (setLoading) {
       setLoading(true);
     }
@@ -76,7 +77,11 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
         });
       }
     }).catch((error) => {
-        console.log(error);
+      if (setLoading) {
+        setLoading(false);
+      }
+
+      console.log(error);
     });
 
     collect.current.on("iframe_ready", () => {
@@ -232,6 +237,7 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
     });
 
     return () => {
+      console.log("unmount");
       collect.current.unmount(collectId, document);
     };
   }, [
