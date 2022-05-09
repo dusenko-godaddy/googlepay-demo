@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import { useAlert } from 'react-alert';
 import Button from 'react-bootstrap-button-loader';
-import { React, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 import './PoyntCollect.css';
 
@@ -12,7 +12,6 @@ import { createOrder, buildLineItems, buildTotal, getShippingMethods } from '../
 const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartTotal}) => {
   const alert = useAlert();
   const collect = useRef();
-
   const [buttonLoading, setButtonLoading] = useState(false);
 
   const getNonce = () => {
@@ -21,7 +20,6 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
   };
 
   useLayoutEffect(() => {
-    console.log("useLayoutEffect");
     if (setLoading) {
       setLoading(true);
     }
@@ -42,7 +40,6 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
         applePay: !options.paymentMethods?.applePay,
         googlePay: !options.paymentMethods?.googlePay,
       },
-      // couponCode: availableCouponCodes[0],
     };
 
     collect.current = new window.TokenizeJs(
@@ -52,6 +49,10 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
     );
     
     collect.current.supportWalletPayments().then((result) => {
+      if (!collect.current) {
+        return;
+      }
+
       const paymentMethods = [];
 
       if (options.paymentMethods?.card) {
@@ -237,8 +238,8 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
     });
 
     return () => {
-      console.log("unmount");
       collect.current.unmount(collectId, document);
+      collect.current = null;
     };
   }, [
     cartItems,

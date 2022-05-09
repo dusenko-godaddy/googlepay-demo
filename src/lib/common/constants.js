@@ -2,7 +2,8 @@ const fonts = '"GD Sherpa", "objektiv-mk2", "Proxima Nova", "Myriad Pro", -apple
 
 const constants = {
   poyntCollect: {
-    businessId: "afabc7eb-8864-47aa-ad8a-83e734940ebb",
+    businessId: "01776564-e3e2-45ea-8f5d-db2440ed4ba8",
+    // businessId: "afabc7eb-8864-47aa-ad8a-83e734940ebb",
     applicationId: "urn:aid:postman-runner",
     merchantName: "GD Test Merchant",
     country: "US",
