@@ -258,7 +258,7 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
   ]);
 
   const button = (
-    <Button className="poynt-collect-button" loading={buttonLoading} onClick={() => getNonce()}>Pay</Button>
+    <Button className="poynt-collect-button" loading={buttonLoading} onClick={() => getNonce()}>Pay with card</Button>
   );
 
   return ( 

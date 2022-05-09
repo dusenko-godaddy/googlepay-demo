@@ -8,7 +8,7 @@ export const createOrder = (cartItems, cartTotal) => {
     },
     lineItems: (cartItems || []).map(item => {
       return {
-        label: item.name + " x" + item.quantity || "1",
+        label: item.name + " x" + (item.quantity || "1"),
         amount: item.price.toString(),
       }
     }),
