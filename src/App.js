@@ -13,6 +13,24 @@ import './App.css';
 
 import TokenizeJs from './dist/bundle';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBCFkJA6Jkm2jFlTCpxyhIZRVar07psnJw",
+  authDomain: "pay-demo-9577e.firebaseapp.com",
+  projectId: "pay-demo-9577e",
+  storageBucket: "pay-demo-9577e.appspot.com",
+  messagingSenderId: "978835034008",
+  appId: "1:978835034008:web:83f6245e992c0cc846e5ed"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
 function App() {
   const [cart, setCart] = useState([]);
   const [detailsItem, setDetailsItem] = useState(null);
