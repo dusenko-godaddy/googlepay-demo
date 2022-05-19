@@ -1,6 +1,6 @@
 import { defaultShippingMethods } from '../common/data';
 
-export const createOrder = (cartItems, cartTotal) => {
+export const createOrder = (cartItems, cartTotal, couponCode) => {
   return {
     total: {
       label: "TOTAL",
@@ -13,7 +13,7 @@ export const createOrder = (cartItems, cartTotal) => {
       }
     }),
     taxRate: 0.0,
-    coupon: {
+    coupon: couponCode || {
       code: "",
       label: "",
       amount: "0.00",

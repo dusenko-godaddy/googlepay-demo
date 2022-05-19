@@ -9,7 +9,7 @@ import constants from '../../lib/common/constants';
 import { availableCouponCodes } from '../../lib/common/data';
 import { createOrder, buildLineItems, buildTotal, getShippingMethods } from '../../lib/helpers/wallet';
 
-const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartTotal}) => {
+const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartTotal, couponCode}) => {
   const alert = useAlert();
   const collect = useRef();
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -24,7 +24,7 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
       setLoading(true);
     }
 
-    const order = createOrder(cartItems, cartTotal);
+    const order = createOrder(cartItems, cartTotal, couponCode);
 
     const walletRequest = {
       merchantName: "GoDaddy Merchant",
@@ -36,6 +36,7 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
       requirePhone: options.requirePhone,
       requireShippingAddress: options.requireShippingAddress,
       supportCouponCode: options.supportCouponCode,
+      couponCode: order.coupon,
       disableWallets: {
         applePay: !options.paymentMethods?.applePay,
         googlePay: !options.paymentMethods?.googlePay,
@@ -244,6 +245,7 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
   }, [
     cartItems,
     cartTotal,
+    couponCode,
     collectId,
     options.paymentMethods?.card,
     options.paymentMethods?.applePay,
