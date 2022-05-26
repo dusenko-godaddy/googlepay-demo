@@ -24,7 +24,7 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
       setLoading(true);
     }
 
-    const order = createOrder(cartItems, cartTotal, couponCode);
+    const order = createOrder(cartItems, cartTotal, availableCouponCodes[1]);
 
     const walletRequest = {
       merchantName: "GoDaddy Merchant",
@@ -42,6 +42,8 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
         googlePay: !options.paymentMethods?.googlePay,
       },
     };
+
+    console.log("walletRequest", walletRequest);
 
     collect.current = new window.TokenizeJs(
       constants.poyntCollect.businessId,
