@@ -17,9 +17,14 @@ const Cart = () => {
   const { items, cartTotal, totalItems, isEmpty, emptyCart } = useCart();
 
   const onNonce = useCallback((nonce) => {
-    emptyCart();
-    console.log("NONCE RECEIVED", nonce);
-    navigate("/success-page");
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        emptyCart();
+        console.log("NONCE RECEIVED", nonce);
+        resolve();
+        navigate("/success-page");
+      }, 3000);
+    });
   }, [navigate, emptyCart]);
 
   const options = {

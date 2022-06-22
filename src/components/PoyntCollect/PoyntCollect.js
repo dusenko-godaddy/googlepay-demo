@@ -26,6 +26,8 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
 
     const order = createOrder(cartItems, cartTotal, availableCouponCodes[1]);
 
+    console.log("order", order);
+
     const walletRequest = {
       merchantName: "GoDaddy Merchant",
       country: constants.poyntCollect.country,
@@ -50,6 +52,8 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
       constants.poyntCollect.applicationId,
       walletRequest
     );
+
+    window.poynt = collect.current;
     
     collect.current.supportWalletPayments().then((result) => {
       if (!collect.current) {
@@ -189,22 +193,16 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
 
     collect.current.on("payment_authorized", (event) => {
       if (event.source === "google_pay") {
-        console.log("GOOGLE PAY TOKEN RECEIVED", event);
-        collect.current.getNonce({ googlePayPaymentToken: event.token });
-        event.complete();
-
-        return;
+        console.log("GOOGLE PAY PAYMENT AUTHORIZED EVENT DATA: ", event);
       }
 
       if (event.source === "apple_pay") {
-        console.log("APPLE PAY TOKEN RECEIVED", event);
-        collect.current.getNonce({ applePayPaymentToken: event.token });
-        event.complete();
-
-        return;
+        console.log("APPLE PAY PAYMENT AUTHORIZED EVENT DATA: ", event);
       }
 
-      console.error("unknown wallet token");
+      Promise.resolve(onNonce(event.nonce)).then(() => {
+        event.complete();
+      });
     });
     
     collect.current.on("nonce", (nonce) => {
