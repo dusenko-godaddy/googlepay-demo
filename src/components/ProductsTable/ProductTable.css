@@ -1,0 +1,43 @@
+.products-table h2 {
+  margin-top: 50px;
+  text-align: left;
+}
+
+.products-table table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.products-table td, .products-table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.products-table table .bold {
+  font-weight: bold;
+}
+
+.products-table table .left {
+  text-align: left;
+}
+
+.products-table table .center {
+  text-align: center;
+}
+
+.products-table table .right {
+  text-align: right;
+}
+
+.products-table table .action svg {
+  cursor: pointer;
+}
+
+.products-table_total {
+  text-align: right;
+  font-size: 22px;
+  font-weight: bold;
+}

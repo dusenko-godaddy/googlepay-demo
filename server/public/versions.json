@@ -1,0 +1,18 @@
+[
+	{
+		"id": "0682ef48-a439-11",
+		"country_code": "US",
+		"language": "en",
+		"type": "SAVE_ONLY",
+		"isStatic": false,
+		"filename": "SAVE_ONLY.hbs"
+	},
+	{
+		"id": "0682ef48-a459-11",
+		"country_code": "US",
+		"language": "en",
+		"type": "SAVE_ONLY",
+		"isStatic": true,
+		"filename": "SAVE_ONLY_STATIC.html"
+	}
+]

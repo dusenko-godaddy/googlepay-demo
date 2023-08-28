@@ -1,0 +1,23 @@
+.cart_payment {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.cart_payment_checkout {
+  margin-top: 20px;
+}
+
+.cart_payment_checkout_button {
+  width: 240px;
+  height: 40px;
+  margin: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background-color: #5cbd5c;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
