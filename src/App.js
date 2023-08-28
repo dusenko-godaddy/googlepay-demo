@@ -10,7 +10,7 @@ import "./App.css";
 import "./lib/collect/collect";
 
 // window.chargeEndpoint = 'https://36ab-78-137-2-160.ngrok.io/collect/charge';
-window.chargeEndpoint = 'http://localhost:1347/collect/charge';
+// window.chargeEndpoint = 'http://localhost:1347/collect/charge';
 
 function App() {
   return (

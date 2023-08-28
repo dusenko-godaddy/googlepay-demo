@@ -2,13 +2,11 @@ const fonts = '"GD Sherpa", "objektiv-mk2", "Proxima Nova", "Myriad Pro", -apple
 
 const constants = {
   poyntCollect: {
-    businessId: "01776564-e3e2-45ea-8f5d-db2440ed4ba8", //DEV
-    applicationId: "urn:aid:9c2cc0f7-e2ed-4617-b57c-88dd0b36c3d8", //DEV
     // businessId: "17ce7699-3aa8-4484-bdc2-864eb0161f5c", //OTE
-    // businessId: "afabc7eb-8864-47aa-ad8a-83e734940ebb", //PROD
+    businessId: "afabc7eb-8864-47aa-ad8a-83e734940ebb", //PROD
     // businessId: "33eb2e79-d186-44b8-badb-7e62e6651344", //PROD CA
     // applicationId: "urn:aid:edc43aed-1d65-4707-b4e0-c242f867eea7", //OTE
-    // applicationId: "urn:aid:5ddfcd36-65d5-4802-9866-a65516914512", //PROD
+    applicationId: "urn:aid:5ddfcd36-65d5-4802-9866-a65516914512", //PROD
     // applicationId: "urn:aid:4c0e5603-1ef1-4d30-911e-fb9fca592f0c", //PROD CA
     merchantName: "Jenny's Garden Centre",
     country: "US",
