@@ -7,9 +7,9 @@ import Checkout from "./pages/Checkout/Checkout";
 import SuccessPage from "./pages/SuccessPage/SuccessPage";
 
 import "./App.css";
-import "./lib/collect/collect";
+// import "./lib/collect/collect";
 
-// window.chargeEndpoint = 'https://36ab-78-137-2-160.ngrok.io/collect/charge';
+// window.chargeEndpoint = 'https://5355-91-244-50-230.ngrok-free.app/collect/charge';
 // window.chargeEndpoint = 'http://localhost:1347/collect/charge';
 
 function App() {

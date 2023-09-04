@@ -5,12 +5,19 @@ const router = require("express").Router();
 const poynt = require("../lib/poynt");
 
 const corsOptions = {
-  origin: ['https://pay-demo-dev.web.app', 'http://localhost:3000', 'http://localhost:3001']
+  origin: ['https://pay-demo-9577e.web.app', 'http://localhost:3000', 'http://localhost:3001']
 };
 
 router.options("/charge", cors(corsOptions));
 router.post("/charge", cors(corsOptions), async (req, res) => {
   console.log(JSON.stringify(req.body));
+
+  // const asyncGetBusiness = util.promisify(poynt.getBusiness).bind(poynt);
+  // const business = await asyncGetBusiness({
+  //   businessId: global.configs.businessId
+  // });
+
+  // return res.status(200).send(business);
 
   try {
     const asyncChargeToken = util.promisify(poynt.chargeToken).bind(poynt);
@@ -37,6 +44,8 @@ router.post("/charge", cors(corsOptions), async (req, res) => {
         message: `Transaction declined. Status code: ${processorCode}. Status message: ${processorMessage}`,
       });
     }
+
+    console.log("Charge success", JSON.stringify(charge));
 
     return res.status(200).send(charge);
   } catch (err) {
