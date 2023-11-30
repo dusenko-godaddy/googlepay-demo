@@ -16,6 +16,7 @@ const constants = {
       height: "490px",
       border: "0px",
     },
+    inlineErrors: true,
     additionalFieldsToValidate: ["emailAddress", "firstName", "lastName"],
     locale: "en-US",
     displayComponents: {

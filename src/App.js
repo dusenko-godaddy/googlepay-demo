@@ -11,6 +11,8 @@ import "./App.css";
 
 // window.chargeEndpoint = 'https://5355-91-244-50-230.ngrok-free.app/collect/charge';
 // window.chargeEndpoint = 'http://localhost:1347/collect/charge';
+// window.logsEndpoint = 'https://975f-78-137-2-160.ngrok-free.app/logs';
+// window.logsEndpoint = 'http://localhost:1347/logs';
 
 function App() {
   return (

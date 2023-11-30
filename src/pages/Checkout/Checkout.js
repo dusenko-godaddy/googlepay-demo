@@ -49,7 +49,7 @@ const Checkout = () => {
     } catch(error) {
       throw error;
     }
-  }, [navigate]);
+  }, [navigate, emptyCart]);
 
   const options = useMemo(() => {
     return {

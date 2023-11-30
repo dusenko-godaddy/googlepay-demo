@@ -25,7 +25,7 @@ export const products = [
     id: 4,
     name: "Jabuticaba",
     description: "Plinia cauliflora, the Brazilian grapetree, jaboticaba or jabuticaba, is a tree in the family Myrtaceae",
-    price: 0.5,
+    price: 100,
     src: "/images/jabuticaba.png",
   }
 ];

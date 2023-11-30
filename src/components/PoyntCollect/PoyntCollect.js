@@ -115,6 +115,7 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
           displayComponents: constants.poyntCollect.displayComponents,
           style: constants.poyntCollect.style,
           customCss: constants.poyntCollect.customCss,
+          inlineErrors: constants.poyntCollect.inlineErrors,
           // enableReCaptcha: true,
         });
       } else {

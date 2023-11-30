@@ -1,15 +1,9 @@
 const util = require("util");
-const cors = require('cors');
 const router = require("express").Router();
 
 const poynt = require("../lib/poynt");
 
-const corsOptions = {
-  origin: ['https://pay-demo-9577e.web.app', 'http://localhost:3000', 'http://localhost:3001']
-};
-
-router.options("/charge", cors(corsOptions));
-router.post("/charge", cors(corsOptions), async (req, res) => {
+router.post("/charge", async (req, res) => {
   console.log(JSON.stringify(req.body));
 
   // const asyncGetBusiness = util.promisify(poynt.getBusiness).bind(poynt);
