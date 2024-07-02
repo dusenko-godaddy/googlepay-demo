@@ -8,7 +8,7 @@ const constants = {
     // applicationId: "urn:aid:edc43aed-1d65-4707-b4e0-c242f867eea7", //OTE
     applicationId: "urn:aid:5ddfcd36-65d5-4802-9866-a65516914512", //PROD
     // applicationId: "urn:aid:4c0e5603-1ef1-4d30-911e-fb9fca592f0c", //PROD CA
-    merchantName: "Jenny's Garden Centre",
+    merchantName: "GoDaddy Merchant",
     country: "US",
     currency: "USD",
     iFrame: {

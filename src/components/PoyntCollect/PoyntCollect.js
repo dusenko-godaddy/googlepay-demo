@@ -35,7 +35,15 @@ const parseMesasge = (event) => {
   }
 };
 
-const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartTotal, couponCode}) => {
+const PoyntCollect = ({
+  setLoading,
+  options,
+  collectId,
+  onNonce,
+  cartItems,
+  cartTotal,
+  couponCode
+}) => {
   const alert = useAlert();
   const collect = useRef();
   const [buttonLoading, setButtonLoading] = useState(false);
@@ -55,9 +63,9 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
     const order = createOrder(cartItems, cartTotal, options.couponCode);
 
     const walletRequest = {
-      merchantName: "GoDaddy Merchant",
-      country: constants.poyntCollect.country,
-      currency: constants.poyntCollect.currency,
+      merchantName: options.merchantName || constants.poyntCollect.merchantName,
+      country: options.country || constants.poyntCollect.country,
+      currency: options.currency || constants.poyntCollect.currency,
       lineItems: buildLineItems(order),
       total: buildTotal(order),
       requireEmail: options.requireEmail,
@@ -72,8 +80,8 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
     };
 
     collect.current = new window.TokenizeJs(
-      constants.poyntCollect.businessId,
-      constants.poyntCollect.applicationId,
+      options.businessId || constants.poyntCollect.businessId,
+      options.applicationId || constants.poyntCollect.applicationId,
       walletRequest
     );
 
@@ -329,6 +337,11 @@ const PoyntCollect = ({setLoading, options, collectId, onNonce, cartItems, cartT
     options.paymentMethods?.applePay,
     options.paymentMethods?.googlePay,
     options.paymentMethods?.paze,
+    options.businessId,
+    options.applicationId,
+    options.merchantName,
+    options.country,
+    options.currency,
     options.requireEmail,
     options.requirePhone,
     options.requireShippingAddress,

@@ -5,6 +5,8 @@ import Cart from "./pages/Cart/Cart";
 import Details from "./pages/Details/Details";
 import Checkout from "./pages/Checkout/Checkout";
 import SuccessPage from "./pages/SuccessPage/SuccessPage";
+import ApplePayTest1 from "./pages/ApplePayTest1/ApplePayTest1";
+import ApplePayTest2 from "./pages/ApplePayTest2/ApplePayTest2";
 
 import "./App.css";
 // import "./lib/collect/collect";
@@ -27,6 +29,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout /> } />
           <Route path="/success-page" element={<SuccessPage /> } />
+          <Route path="/applepaytest1" element={<ApplePayTest1 /> } />
+          <Route path="/applepaytest2" element={<ApplePayTest2 /> } />
         </Routes>
       </div>
     </Router>
